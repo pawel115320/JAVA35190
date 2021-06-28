@@ -1,0 +1,76 @@
+CONTROLLER
+
+package sample;
+
+
+import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+
+public class Controller {
+    public Button btnMain;
+    public int LicznikKlik;
+    public TextField Licznik;
+
+    public static void onMainBtnAction(ActionEvent actionEvent) {
+        LicznikKlik++;
+        if(LicznikKlik == 1){
+            btnMain.setText("I jeszcze raz!");
+        }
+        txtLicznik.setText("Klikniêto: " + clickCounter + " razy");
+    }
+
+
+
+MAIN
+
+package sample;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+public class Main extends Application {
+
+    @Override
+    public void start(Stage primaryStage) throws Exception{
+        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        primaryStage.setTitle("project title");
+        primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.show();
+    }
+
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+
+
+
+FXML
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <Button fx:id="btnMain" layoutX="240.0" layoutY="160.0" mnemonicParsing="false" onAction="#onMainBtnAction" text="Kliknij mnie!" textFill="#526F21" textAlignment="CENTER" >
+         <font>
+            <Font size="14.5" />
+         </font>
+      </Button>
+      <TextField fx:id="Licznik" alignment="CENTER" editable="false" focusTraversable="false" layoutX="192.0" layoutY="144.0">
+         <font>
+            <Font size="15.7" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>
